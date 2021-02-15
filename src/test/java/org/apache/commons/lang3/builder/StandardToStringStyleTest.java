@@ -175,14 +175,166 @@ public class StandardToStringStyleTest {
     }
 
     @Test
+    public void testSetUseClassName() {
+        StandardToStringStyle sss = new StandardToStringStyle();
+        sss.setUseClassName(false);
+        assertFalse(sss.isUseClassName());
+    }
+
+    @Test
     public void testDefaultValueOfUseFieldNames() {
         assertTrue((new StandardToStringStyle()).isUseFieldNames());
+    }
+
+    @Test
+    public void testSetUseFieldNames() {
+        StandardToStringStyle sss = new StandardToStringStyle();
+        sss.setUseFieldNames(false);
+        assertFalse(sss.isUseFieldNames());
+    }
+
+    @Test
+    public void testDefaultValueOfFullDetail() {
+        assertTrue((new StandardToStringStyle()).isDefaultFullDetail());
+    }
+
+    @Test
+    public void testSetUseFullDetail() {
+        StandardToStringStyle sss = new StandardToStringStyle();
+        sss.setDefaultFullDetail(false);
+        assertFalse(sss.isDefaultFullDetail());
+    }
+
+    @Test
+    public void testDefaultArrayContentDetail() {
+        assertTrue((new StandardToStringStyle()).isArrayContentDetail());
+    }
+
+    @Test
+    public void testSetArrayContentDetail() {
+        StandardToStringStyle sss = new StandardToStringStyle();
+        sss.setArrayContentDetail(false);
+        assertFalse(sss.isArrayContentDetail());
+    }
+
+    @Test
+    public void testDefaultArrayStart() {
+        assertEquals("{", (new StandardToStringStyle()).getArrayStart());
+    }
+
+    @Test
+    public void testDefaultArrayEnd() {
+        assertEquals("}", (new StandardToStringStyle()).getArrayEnd());
+    }
+
+    @Test
+    public void testDefaultArraySeparator() {
+        assertEquals(",", (new StandardToStringStyle()).getArraySeparator());
+    }
+
+    @Test
+    public void testDefaultContentStart() {
+        assertEquals("[", (new StandardToStringStyle()).getContentStart());
+    }
+
+    @Test
+    public void testSetContentStart() {
+        StandardToStringStyle sss = new StandardToStringStyle();
+        sss.setContentStart("{");
+        assertEquals("{", (sss.getContentStart()));
+    }
+
+    @Test
+    public void testDefaultContentEnd() {
+        assertEquals("]", (new StandardToStringStyle()).getContentEnd());
+    }
+
+    @Test
+    public void testSetContentEnd() {
+        StandardToStringStyle sss = new StandardToStringStyle();
+        sss.setContentEnd("}");
+        assertEquals("}", (sss.getContentEnd()));
+    }
+
+    @Test
+    public void testDefaultFieldNameValueSeparator() {
+        assertEquals("=", (new StandardToStringStyle()).getFieldNameValueSeparator());
+    }
+
+    @Test
+    public void testSetFieldNameValueSeparator() {
+        StandardToStringStyle sss = new StandardToStringStyle();
+        sss.setFieldNameValueSeparator(";");
+        assertEquals(";", (sss.getFieldNameValueSeparator()));
+    }
+
+    @Test
+    public void testDefaultFieldSeparator() {
+        assertEquals(",", (new StandardToStringStyle()).getFieldSeparator());
+    }
+
+    @Test
+    public void testSetFieldSeparator() {
+        StandardToStringStyle sss = new StandardToStringStyle();
+        sss.setFieldSeparator(";");
+        assertEquals(";", (sss.getFieldSeparator()));
+    }
+
+    @Test
+    public void testDefaultFieldSeparatorAtStart() {
+        assertFalse(new StandardToStringStyle().isFieldSeparatorAtStart());
+    }
+
+    @Test
+    public void testSetFieldSeparatorAtStart() {
+        StandardToStringStyle sss = new StandardToStringStyle();
+        sss.setFieldSeparatorAtStart(true);
+        assertTrue(sss.isFieldSeparatorAtStart());
+    }
+
+    @Test
+    public void testDefaultFieldSeparatorAtEnd() {
+        assertFalse(new StandardToStringStyle().isFieldSeparatorAtEnd());
+    }
+
+    @Test
+    public void testSetFieldSeparatorAtEnd() {
+        StandardToStringStyle sss = new StandardToStringStyle();
+        sss.setFieldSeparatorAtEnd(true);
+        assertTrue(sss.isFieldSeparatorAtEnd());
+    }
+
+
+    @Test
+    public void testDefaultNullText() {
+        assertEquals("<null>", (new StandardToStringStyle()).getNullText());
+    }
+
+    @Test
+    public void testDefaulSizeStartText() {
+        assertEquals("<size=", (new StandardToStringStyle()).getSizeStartText());
+    }
+
+    @Test
+    public void testDefaultSizeEndText() {
+        assertEquals(">", (new StandardToStringStyle()).getSizeEndText());
+    }
+
+    @Test
+    public void testDefaultSummaryObjectStartText() {
+        assertEquals("<", (new StandardToStringStyle()).getSummaryObjectStartText());
+    }
+
+    @Test
+    public void testDefaultSummaryObjectEndText() {
+        assertEquals(">", (new StandardToStringStyle()).getSummaryObjectEndText());
     }
 
     @Test
     public void testDefaultValueOfUseShortClassName() {
         assertFalse((new StandardToStringStyle()).isUseShortClassName());
     }
+
 
     @Test
     public void testDefaultValueOfUseIdentityHashCode() {
