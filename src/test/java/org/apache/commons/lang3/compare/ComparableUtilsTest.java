@@ -16,11 +16,14 @@
  */
 package org.apache.commons.lang3.compare;
 
-import static org.apache.commons.lang3.compare.ComparableUtils.is;
+import static org.apache.commons.lang3.compare.ComparableUtils.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -284,5 +287,36 @@ public class ComparableUtilsTest {
         }
 
         BigDecimal a = BigDecimal.ONE;
+
+        Predicate<Integer> predicateBtE = betweenExclusive(5, 10);
+        Predicate<Integer> predicateBt = between(5, 10);
+        Predicate<Integer> predicateGe = ge(10);
+        Predicate<Integer> predicateGt = gt(10);
+        Predicate<Integer> predicateLe = le(10);
+        Predicate<Integer> predicateLt = lt(10);
+
+        long predicateBtECount = Stream.of(21, 22, 24, 25, 26).filter(predicateBtE.negate()).count();
+        long predicateBtCount = Stream.of(21, 22, 24, 25, 26).filter(predicateBt.negate()).count();
+        long predicateGeCount = Stream.of(21, 22, 24, 25, 26).filter(predicateGe.negate()).count();
+        long predicateGtCount = Stream.of(21, 22, 24, 25, 26).filter(predicateGt.negate()).count();
+        long predicateLeCount = Stream.of(21, 22, 24, 25, 26).filter(predicateLe.negate()).count();
+        long predicateLtCount = Stream.of(21, 22, 24, 25, 26).filter(predicateLt.negate()).count();
+
+
+        @DisplayName("test predicate method")
+        @Nested
+        class Predicate_C_test {
+
+            @Test
+            void between_returns_results() {
+                assertEquals(predicateBtECount, 5l);
+                assertEquals(predicateBtCount, 5l);
+                assertEquals(predicateGeCount, 0l);
+                assertEquals(predicateGtCount, 0l);
+                assertEquals(predicateLeCount, 5l);
+                assertEquals(predicateLtCount, 5l);
+            }
+
+        }
     }
 }
